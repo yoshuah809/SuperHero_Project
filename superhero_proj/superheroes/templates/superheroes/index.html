@@ -7,12 +7,18 @@
     <title>Superhero index</title>
 </head>
 <body>
-    <h1>List of Heroes</h1>
-    <ul>
-        {% for hero in all_heroes %}
-        <li> {{ hero.name }} </li>
-        {% endfor %}
+    <container color: yellow class = "container">
+        <h1>List of Heroes</h1>
+        <ul>
+            {% for hero in all_heroes %}
+            <li> <h2>{{ hero.name }} <a href="{% url 'superheroes:detail' hero.id %}">Details</a> <h2>  </li>
+            {% endfor %}
+            
 
-    </ul>
+        </ul>
+        <a href="{% url 'superheroes:create' %}">Create Superhero</a>
+    
+    </container>
+   
 </body>
 </html>
