@@ -1,0 +1,52 @@
+{% extends 'superheroes/index.html' %}
+
+{% block content %}
+
+<p></p>
+<h1>List of Superheroes</h1>
+<p></p>
+<div class="row col-3 justify-content-end mb-2 pr-0">
+    <!-- #<button type="button" class="btn btn-success">Create a New Superhero</button> -->
+    <a class = "btn btn-success col md-3" href="{% url 'superheroes:index' %}">Create New Superhero</a>
+</div>
+    <p></p>
+
+    <table class="table table-striped">
+        <caption>List of Heroes</caption>
+        <thead>
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Name</th>
+            <th scope="col">Alter Ego</th>
+            <th scope="col">Primary Ability</th>
+            <th scope="col">Second Ability</th>
+            <th scope="col">Catch Phrase</th>
+            <th scope="col">Display</th>
+            <th scope="col">Edit</th>
+            <th scope="col">Delete</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for hero in heroes %}   
+
+        <tr>
+            <th scope="row"> {{ hero.id }} </th>
+            <td>{{ hero.name }}</td>
+            <td>{{ hero.alter_ego }}</td>
+            <td>{{ hero.primary_ability }}</td>
+            <td>{{ hero.secondary_ability }}</td>
+            <td>{{ hero.catch_phrase }}</td>
+            <td><a class = "btn btn-success" href="{% url 'superheroes:show' hero.id %}">Display Superhero</a></td> 
+            <td><a class = "btn btn-warning" href="{% url 'superheroes:edit' hero.id %}">Edit</a></td> 
+            <td><a class = "btn btn-danger" href="{% url 'superheroes:delete' hero.id %}">Delete</a></td> 
+            {% if message %}
+            <div class="alert alert-success" role="alert">
+                The Superhero has been Deleted!
+            </div>
+        {% endif  %}  
+        </tr>
+        {% endfor %}   
+      
+        </tbody>
+    </table>
+{% endblock %}

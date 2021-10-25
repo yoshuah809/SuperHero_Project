@@ -1,6 +1,5 @@
 {% extends 'superheroes/index.html' %}
 
-
 {% load crispy_forms_tags %}
 {% block content %}
 
@@ -10,20 +9,15 @@
         </div>
     {% endif %}
 
-    <h1>Create New SuperHero2</h1>
+    <h1>Display SuperHero</h1>
 
-    <form action= "{% url 'superheroes:savehero' %}" method="POST">
+    <form action= "#" method="get">
         {% csrf_token %}
 
-        {% if message %}
-            <div class="alert alert-success" role="alert">
-                The Superhero has been successfully created!
-            </div>
-        {% endif  %}    
+      
 
         {{ form | crispy }}
 
-        <button type="submit" class="btn btn-primary">Save</button>
         <a class="btn btn-warning" href="{% url 'superheroes:display' %}">Cancel</a>
     </form>
 {% endblock %}
